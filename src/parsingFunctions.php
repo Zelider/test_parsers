@@ -5,12 +5,26 @@ use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use src\yulaResponceHandler;
 
-function extractFields($arr_atr, $elm)
+/**
+ * Метод извлекает требуемые поля из DOM-элемента
+ * @param $arr_atr
+ * @param $elm
+ *
+ * @return array
+ */
+function extractFields($arr_atr, $elm): array
 {
     return array_combine($arr_atr, $elm->extract($arr_atr)[0]);
 }
 
-function pushToDatabase($db_name, $arr)
+/**
+ * Метод загружает массив полей в требуемую базу данных
+ * @param string $db_name
+ * @param array $arr
+ *
+ * @return void
+ */
+function pushToDatabase(string $db_name, array $arr)
 {
 
     $conn = new mysqli('localhost', 'a1', '111111', $db_name);
@@ -29,7 +43,15 @@ function pushToDatabase($db_name, $arr)
     mysqli_query($conn, $NewListingQuery);
 }
 
-function createCrawler($html) : Crawler
+/**
+ * Метод создает кроулер для требуемого URL
+ * @param string $html
+ *
+ * @return Crawler
+ *
+ * @throws \GuzzleHttp\Exception\GuzzleException
+ */
+function createCrawler(string $html) : Crawler
 {
     $client = new Client();
     $responce = $client->get($html);
