@@ -3,7 +3,7 @@
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-function spreadsheetCreator($arr, $filename) {
+public function spreadsheetCreator($arr, $filename) {
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet()
         ->fromArray(

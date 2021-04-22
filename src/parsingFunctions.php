@@ -4,11 +4,13 @@ use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use yulaResponceHandler;
 
-function extract_fields ($arr_atr, $elm) {
+function extractFields($arr_atr, $elm)
+{
     return array_combine($arr_atr, $elm->extract($arr_atr)[0]);
 }
 
-function pushToDatabase($db_name, $arr) {
+function pushToDatabase($db_name, $arr)
+{
 
     $conn = new mysqli('localhost', 'a1', '111111', $db_name);
 
@@ -29,7 +31,8 @@ function pushToDatabase($db_name, $arr) {
     //$res->close();
 }
 
-function createCrawler($html) : Crawler {
+function createCrawler($html) : Crawler
+{
     //$html = 'https://youla.ru/moskva/zhivotnye'; // type string
     $client = new Client();
     $responce = $client->get($html);

@@ -1,7 +1,7 @@
 <?php
 
 
-interface iResponseHandler
+interface IResponseHandler
 {
     public function handleResponce($resp_str);
 }
