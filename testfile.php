@@ -9,12 +9,12 @@ use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
 $crawler = createCrawler('https://youla.ru/moskva/zhivotnye');
-
-$lils = $crawler->filter('.product_list');
-$lils = $lils
-    ->reduce( function ($lil) {
-    return ($lil->attr('class') != 'product_item--ad');
-} );
+//
+//$lils = $crawler->filter('.product_list');
+//$lils = $lils
+//    ->reduce( function ($lil) {
+//    return ($lil->attr('class') != 'product_item--ad');
+//} );
 
 foreach ($lils->children() as $listing){
     $element = new Crawler($listing);

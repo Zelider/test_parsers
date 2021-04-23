@@ -59,3 +59,25 @@ function createCrawler(string $html) : Crawler
 
     return new Crawler($htmljs);
 }
+
+/**
+ * Метод фильтрует результаты использования кроулера по атрибуту класса иб если требуется
+ * убирает элементы с нежелательными атрибутами
+ * @param Crawler $crw
+ * @param string $attr
+ * @param string|null $without
+ *
+ * @return Crawler
+ */
+function filterClassAttributes(Crawler $crw, string $attr, string $without = null): Crawler
+{
+    $res_arr = $crw->filter($attr);
+    if ($without != null) {
+        $res_arr = $res_arr
+            ->reduce( function ($resl) use ($without) {
+                return ($resl->attr('class') != $without);
+            } );
+    }
+
+    return $res_arr;
+}
