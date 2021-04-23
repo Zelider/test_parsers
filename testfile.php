@@ -15,6 +15,7 @@ $crawler = createCrawler('https://youla.ru/moskva/zhivotnye');
 //    ->reduce( function ($lil) {
 //    return ($lil->attr('class') != 'product_item--ad');
 //} );
+$lils = filterClassAttributes($crawler, '.product_list', 'product_item--ad');
 
 foreach ($lils->children() as $listing){
     $element = new Crawler($listing);
